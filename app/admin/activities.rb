@@ -1,5 +1,6 @@
 ActiveAdmin.register Activity do
-    index do                            
+
+  index do                            
     column :position
     column :organization
     column :location
@@ -9,14 +10,12 @@ ActiveAdmin.register Activity do
     column("Highlights") do |activity|
       a_array = Array.new
       activity.activity_highlights.each do |highlight|
-      	a_array.push(highligh.highlight)
+      	a_array.push(highlight.highlight)
       end
-      a_array.join(", ")
+      a_array.join(", ").slice(0, 100)
     end
     default_actions                   
   end     
-
-  filter :organization
 
   menu :parent => "Resume"
 
@@ -40,4 +39,29 @@ ActiveAdmin.register Activity do
 	end                               
 	f.actions                         
   end
+
+  	show :title => :organization do
+    attributes_table do
+      row :position
+      row :organization
+      row :category
+      row :start_date
+      row :end_date
+      panel("Highlights") do
+      	table_for activity.activity_highlights do |highlight|
+    			column :highlight
+    			column :priority
+    			column("Tags") do |highlight|
+      				a_array = Array.new
+      				highlight.tags.each do |tag|
+      					a_array.push(tag.title)
+     				end
+     				a_array.join(", ")
+     			end
+    		end
+    	end
+    end
+    active_admin_comments
+   end
+   
 end
