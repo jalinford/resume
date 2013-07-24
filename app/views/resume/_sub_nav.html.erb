@@ -1,0 +1,8 @@
+<dl class="sub-nav">
+  <dt>Resume Filter:</dt>
+  <dd class="<%= 'active' if @tags_displayed.nil? %>" ><%= link_to "None", resume_path %></dd>
+  <% @all_tags.each do |tag| %>
+		<dd class="<%= 'active' unless @tags_displayed.nil? || !@tags_displayed.include?(tag) %>"><%= link_to tag.title, tag_path(:title => tag.title) %></dd>
+	<% end %>
+	<dd class="<%= 'active' if !@tags_displayed.nil? && @tags_displayed.sort == @all_tags.sort %>" ><%= link_to "All", tag_path(:title => all_titles) %></dd>
+</dl>
