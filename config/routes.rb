@@ -2,6 +2,7 @@ Resume::Application.routes.draw do
 
   root :to => 'main#index'
   match 'resume', :to => "resume#index"
+  get '/resume/*title', :to => "resume#tag", as: 'tag'
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

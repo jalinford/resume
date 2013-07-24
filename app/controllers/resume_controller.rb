@@ -5,5 +5,6 @@ class ResumeController < ApplicationController
 
   def tag
   	@tags = Tag.where(featured: true)
+  	@tags_all = Tag.find_all_by_title(params[:title].split('/'))
   end
 end
