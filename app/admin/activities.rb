@@ -1,4 +1,23 @@
 ActiveAdmin.register Activity do
+    index do                            
+    column :position
+    column :organization
+    column :location
+    column :category
+    column :start_date
+    column :end_date
+    column("Highlights") do |activity|
+      a_array = Array.new
+      activity.activity_highlights.each do |highlight|
+      	a_array.push(highligh.highlight)
+      end
+      a_array.join(", ")
+    end
+    default_actions                   
+  end     
+
+  filter :organization
+
   menu :parent => "Resume"
 
   form do |f|                         

@@ -1,0 +1,14 @@
+<h2><%= category.title %></h2>
+<% category.activities.each do |activity| %>
+	<% if all_tag_activities(@tags_displayed).include? activity %>
+		<h3><%= activity.position + ', ' unless activity.position == ''%><%= activity.organization %></h3>
+		<h5><%= activity.location unless activity.location.nil? %></h5>
+		<h6><%= activity.start_date.strftime('%B %Y') unless activity.start_date.nil? %>
+			<%= " - " + activity.end_date.strftime('%B %Y') unless activity.end_date.nil? %></h6>
+		<ul class="disc">
+			<% all_highlights(activity.activity_highlights, @tags_displayed).each do |highlight| %>
+				<li><%= highlight.highlight %></li>
+			<% end %>
+		</ul>
+	<% end %>
+<% end %>

@@ -1,3 +1,23 @@
 <%= render 'sub_nav' %>
-<h1>Resume#tag</h1>
-<p>Find me in app/views/resume/tag.html.erb</p>
+<h2>Andrew Linford</h2>
+<h5>jalinford@gmail.com</h5>
+<h6>Cell phone: (415) 226-8461<h6>
+
+<% if @tags_displayed.count == 1 %>
+	<% tag = @tags_displayed.first %>
+	<% unless tag.objective == '' %>
+		<h4>Objective</h4>
+		<p><%= tag.objective %></p>
+	<% end %>
+
+	<% unless tag.summary == '' %>
+		<h4>Summary</h4>
+		<p><%= tag.summary %></p>
+	<% end %>
+<% end %>
+
+<% all_tag_categories(@tags_displayed).each do |category| %>
+	<%= render 'category', :category => category %>
+<% end %>
+
+

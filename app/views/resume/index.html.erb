@@ -1,7 +1,6 @@
 <%= render 'sub_nav' %>
-<h1>Resume#index</h1>
-<p>Find me in app/views/resume/index.html.erb</p>
+<p>A list of the resumes you can find. Feel free to mix and match between all the different resume types, the resume will dynamically change for you!</p>
 
-<ul><% @tags.each do |tag| %>
-	<li><%= tag.title %> </li>
+<ul><% @all_tags.each do |tag| %>
+	<li><%= link_to tag.title, tag_path(:title => tag.title) %></li>
 <% end %></ul>
