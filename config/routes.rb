@@ -1,4 +1,12 @@
 Resume::Application.routes.draw do
+
+  root :to => 'main#index'
+  match 'resume', :to => "resume#index"
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
