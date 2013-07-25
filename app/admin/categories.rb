@@ -9,7 +9,7 @@ ActiveAdmin.register Category do
   form do |f|                         
 	f.inputs "Category Details" do       
 	  f.input :title, :hint => "Title of section of the resume"                  
-	  f.input :priority, :hint => "A number between 1 and 10"
+	  f.input :priority, :as => :select, :collection => 1..10
 	  end                               
 	f.actions                         
   end
