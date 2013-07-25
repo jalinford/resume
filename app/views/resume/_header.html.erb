@@ -1,0 +1,39 @@
+<% if Header.count > 0 %>
+	<% if @tags_displayed.count == 1 %>
+		<% tag = @tags_displayed.first %>
+		<% if tag.headers.count > 0 %>
+			<% header = tag.headers.first %>
+		<% else %>
+			<% header = Header.where(default: true).first %>
+		<% end %>
+	<% elsif Header.where(default: true).count == 1 %>
+		<% header = Header.where(default: true).first %>
+	<% elsif Header.where(default: true).count == 0 %>
+		<% headers = Header.all %>
+		<% headers = headers.sort {|a, b| b.tags.count <=> a.tags.count } %>
+		<% header = headers.first %>
+	<% else %>
+		<% headers = Header.where(default: true) %>
+		<% headers = headers.sort {|a, b| b.tags.count <=> a.tags.count } %>
+		<% header = headers.first %>
+	<% end %>
+
+	<h2><%= header.name %></h2>
+	<% unless header.email == '' %>
+		<h4><%= header.email %></h4>
+	<% end %>
+	<% unless header.phone == '' %>
+		<h6>Cell phone: <%= header.phone %></h6>
+	<% end %>
+	<% unless header.address_one == '' %>
+		<h5>Address:</h5>
+		<h6><%= header.address_one %></h6>
+	<% end %>
+	<% unless header.address_two == '' %>
+		<h6><%= header.address_two %></h6>
+	<% end %>
+	<% unless header.address_three == '' %>
+		<h6><%= header.address_three %></h6>
+	<% end %>
+<% end %>
+

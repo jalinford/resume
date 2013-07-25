@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724010653) do
+ActiveRecord::Schema.define(:version => 20130725071247) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -78,6 +78,26 @@ ActiveRecord::Schema.define(:version => 20130724010653) do
     t.integer  "priority"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "header_tags", :force => true do |t|
+    t.integer  "header_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "headers", :force => true do |t|
+    t.string   "title"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address_one"
+    t.string   "address_two"
+    t.string   "address_three"
+    t.boolean  "default"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "tags", :force => true do |t|

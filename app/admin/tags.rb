@@ -13,6 +13,7 @@ ActiveAdmin.register Tag do
 	f.inputs "Activity Details" do       
 	  f.input :title, :hint => "Name of a type of Resume"                  
 	  f.input :featured, :as => :radio
+    f.input :headers, :member_label => :title, :as => :radio
 	  f.input :objective
 	  f.input :summary        
 	  end                               
