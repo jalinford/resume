@@ -1,6 +1,11 @@
-<%= render 'sub_nav' %>
-<p>A list of the resumes you can find. Feel free to mix and match between all the different resume types, the resume will dynamically change for you!</p>
+<% if @all_tags == [] %>
+	<p>A list of the resumes will be located here when they are made!</p>
+<% else %>
+	<%= render 'sub_nav' %>
+	<p>A list of the resumes you can find. Feel free to mix and match between all the different resume types, the resume will dynamically change for you!</p>
+<% end %>
 
 <ul><% @all_tags.each do |tag| %>
 	<li><%= link_to tag.title, tag_path(:title => tag.title) %></li>
 <% end %></ul>
+
