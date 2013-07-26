@@ -19,3 +19,8 @@
 <% end %>
 
 
+<% all_tag_footers(@tags_displayed).each do |footer| %>
+	<%= render 'footer', :footer => footer %>
+<% end %>
+
+

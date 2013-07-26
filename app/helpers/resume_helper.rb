@@ -45,6 +45,16 @@ module ResumeHelper
 		return all_highlights.sort { |a, b| b.priority <=> a.priority }
 	end
 
+	def all_items(items, tags)
+		all_items = []
+		items.each do |item|
+			if tags.any? { |tag| tag.footer_items.include?(item)}
+				all_items.push(item)
+			end
+		end
+		return all_items.sort { |a, b| b.priority <=> a.priority }
+	end
+
 	def tag_activities(tag)
 		activities = []
 		tag.activity_highlights.each do |highlight|
@@ -79,5 +89,23 @@ module ResumeHelper
 			end
 		end
 		return categories.uniq.sort { |a, b| b.priority <=> a.priority }
+	end
+
+	def tag_footers(tag)
+		footers = []
+		tag.footer_items.each do |item|
+			footers.push(item.footer)
+		end
+		return footers.uniq
+	end
+
+	def all_tag_footers(tags)
+		footers = []
+		tags.each do |tag|
+			tag_footers(tag).each do |footer|
+				footers.push(footer)
+			end
+		end
+		return footers.uniq
 	end
 end

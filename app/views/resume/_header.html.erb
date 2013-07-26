@@ -3,8 +3,11 @@
 		<% tag = @tags_displayed.first %>
 		<% if tag.headers.count > 0 %>
 			<% header = tag.headers.first %>
-		<% else %>
+		<% elsif Header.where(default: true).count > 0 %>
 			<% header = Header.where(default: true).first %>
+		<% else %>
+			<% headers = Header.all.sort {|a, b| b.tags.count <=> a.tags.count } %>
+			<% header = headers.first %>
 		<% end %>
 	<% elsif Header.where(default: true).count == 1 %>
 		<% header = Header.where(default: true).first %>
@@ -12,9 +15,12 @@
 		<% headers = Header.all %>
 		<% headers = headers.sort {|a, b| b.tags.count <=> a.tags.count } %>
 		<% header = headers.first %>
-	<% else %>
+	<% elsif Header.where(default: true).count > 0%>
 		<% headers = Header.where(default: true) %>
 		<% headers = headers.sort {|a, b| b.tags.count <=> a.tags.count } %>
+		<% header = headers.first %>
+	<% else %>
+		<% headers = Header.all.sort {|a, b| b.tags.count <=> a.tags.count } %>
 		<% header = headers.first %>
 	<% end %>
 
