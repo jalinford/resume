@@ -2,22 +2,17 @@ This has been built from Foundation 4 and ActiveAdmin to provide a dynamic resum
 
 The (unproofread) steps at the beginning included:
 
-rails new resume
+$ rails new resume
 
-cd resume
+$ cd resume
 
 in Gemfile (after rails gem)
+
 gem 'activeadmin'
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
   gem 'zurb-foundation'
 end
@@ -44,9 +39,13 @@ bundle install
 rails g foundation:install
 
 git init
+
 git add .
+
 git commit -m 'First Commit'
+
 rails generate controller main index
+
 rails g controller resume index tag
 
 delete rails welcome file (index) in public
